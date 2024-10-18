@@ -38,5 +38,5 @@ repos:
         language: python
         types: [python]
         require_serial: true
-        exclude: "^(doc/)|(tests/)|^(examples/)"
+        exclude: "no_typehints\\.py"
         args: ["--strict", "--namespace-packages", "--explicit-package-bases"]
