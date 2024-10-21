@@ -1,6 +1,9 @@
 from collections.abc import Callable, Collection, Iterable, Iterator
 from typing import ParamSpec, TypeVar
 
+from mypy_extensions import Arg
+from typing_extensions import assert_type
+
 
 class MyObject:
     def __init__(self, x: int, y: str, z: bool):
@@ -45,3 +48,9 @@ create_myobject(1, "a", False)
 collection = create_collection(values=[MyObject(x=1, y="a", z=False)])
 
 obj = next(iter(collection))
+
+
+assert_type(
+    create_myobject,
+    Callable[[Arg(int, "x"), Arg(str, "y"), Arg(bool, "z")], MyObject],
+)
